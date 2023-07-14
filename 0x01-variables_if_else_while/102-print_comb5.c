@@ -8,10 +8,14 @@
  */
 int main(void)
 {
-int a, b, c, d;
+int a, b, c, d, d_max;
 for (a = 0; a <= 9; a++)
 {
-	for (b = 0; b < 9; b++)
+	if (a == 9)
+		d_max = 8
+	else
+		d_max = 9
+	for (b = 0; b <= d_max; b++)
 		{
 		for (c = a; c <= 9; c++)
 		{
