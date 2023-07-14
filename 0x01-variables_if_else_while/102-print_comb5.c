@@ -18,7 +18,7 @@ for (a = 0; a <= 9; a++)
 			if (c == a)
 				d = b + 1;
 			else
-				d = b;
+				d = 0;
 			for (; d <= 9; d++)
 			{
 				putchar('0' + a);
