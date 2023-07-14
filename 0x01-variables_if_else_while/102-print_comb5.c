@@ -15,7 +15,11 @@ for (a = 0; a <= 9; a++)
 		{
 		for (c = a; c <= 9; c++)
 		{
-			for (d = b + 1; d <= 9; d++)
+			if (c == a)
+				d = b + 1;
+			else
+				d = b;
+			for (; d <= 9; d++)
 			{
 				putchar('0' + a);
 				putchar('0' + b);
