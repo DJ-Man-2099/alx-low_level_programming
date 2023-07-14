@@ -2,8 +2,8 @@
 /**
  * main - Entry point
  *
- * it prints exactly
- * '"Programming is like building a multilingual puzzle'
+ * it prints the size of various types
+ * on the computer it is compiled and run on
  * followed by a new line
  *
  * Return: Always 0 (Success)
