@@ -13,8 +13,7 @@ long a, b, even_sum, sum;
 a = 1;
 b = 2;
 even_sum = 2;
-do
-{
+do {
 	sum = a + b;
 	if (sum % 2 == 0)
 	{
