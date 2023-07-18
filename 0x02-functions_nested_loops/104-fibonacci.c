@@ -9,14 +9,15 @@
  */
 int main(void)
 {
-unsigned long int a, b, i, sum;
+int i;
+double a, b, sum;
 a = 1;
 b = 2;
-printf("%lu, %lu, ", a, b);
+printf("%.0f, %.0f, ", a, b);
 for (i = 2; i < 98; i++)
 {
 	sum = a + b;
-	printf("%lu", sum);
+	printf("%.0f", sum);
 	if (i != 97)
 	{
 		printf(", ");
