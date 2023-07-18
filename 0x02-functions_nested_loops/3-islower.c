@@ -3,11 +3,11 @@
 /**
  * _islower - function
  * @c: the character to be checked
- * it prints the alphabet,
- * in lower case
- * followed by a new line
  *
- * Return: Always 0 (Success)
+ * it checks for lowercase character
+ *
+ * Return: 1 if c is lowercase,
+ * 0 otherwise
  */
 int _islower(int c)
 {
