@@ -17,7 +17,7 @@ for (i = 2; i < 98; i++)
 {
 	sum = a + b;
 	printf("%lu", sum);
-	if (i != 49)
+	if (i != 97)
 	{
 		printf(", ");
 	}
