@@ -15,25 +15,26 @@
 
 int main(void)
 {
-	long int i, value, limit, max;
+	long int i, value, orig, max;
 
 	value = 612852475143;
-
-	limit = value / 2;
-
-	while (value % 2 == 0)
+	orig = sqrt(value);
+/*
+ *	printf("%ld\n", orig);
+ *	while (value % 2 == 0)
+ *	{
+ *		printf("2, ");
+ *		value /= 2;
+ *	}
+ */
+	for (i = 3; i <= orig; i++)
 	{
-		printf("2, ");
-		value /= 2;
-	}
-
-	for (i = 3; i * i <= limit; i++)
-	{
-		while (value % i == 0)
+		if (value % i == 0)
 		{
 			max = i;
-
-			value /= i;
+		/*
+		 * printf("%ld, ", max);
+		 */
 		}
 	}
 	printf("%ld\n", max);
