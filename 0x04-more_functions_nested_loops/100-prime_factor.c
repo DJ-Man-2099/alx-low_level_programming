@@ -15,18 +15,27 @@
 
 int main(void)
 {
-	long int i, value, limit;
+	long int i, value, limit, max;
 
 	value = 612852475143;
-	limit = sqrt(value);
 
-	for (i = 3; i <= limit; i++)
+	limit = value / 2;
+
+	while (value % 2 == 0)
+	{
+		printf("2, ");
+		value /= 2;
+	}
+
+	for (i = 3; i * i <= limit; i++)
 	{
 		while (value % i == 0)
 		{
+			max = i;
+
 			value /= i;
 		}
 	}
-	printf("%ld\n", i);
+	printf("%ld\n", max);
 	return (0);
 }
