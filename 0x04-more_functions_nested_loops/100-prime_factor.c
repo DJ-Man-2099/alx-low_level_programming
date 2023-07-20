@@ -20,7 +20,7 @@ int main(void)
 	value = 612852475143;
 	limit = sqrt(value);
 
-	for (i = 3; i <= limit; i += 2)
+	for (i = 3; i <= limit; i++)
 	{
 		while (value % i == 0)
 		{
