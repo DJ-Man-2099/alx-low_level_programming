@@ -18,7 +18,7 @@ int main(void)
 	long int i, value, orig, max;
 
 	value = 612852475143;
-	orig = sqrt(value);
+	orig = value;
 /*
  *	printf("%ld\n", orig);
  *	while (value % 2 == 0)
@@ -27,16 +27,19 @@ int main(void)
  *		value /= 2;
  *	}
  */
-	for (i = 3; i <= orig; i++)
+	for (i = 2; i * i <= orig; i++)
 	{
-		if (value % i == 0)
+		while (value % i == 0)
 		{
 			max = i;
 		/*
 		 * printf("%ld, ", max);
 		 */
+			value = value / max;
 		}
 	}
+	if (value > 1)
+		max = value;
 	printf("%ld\n", max);
 	return (0);
 }
