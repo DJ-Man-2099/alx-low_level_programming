@@ -29,9 +29,8 @@ void print_number(int n)
 			_putchar('0' + n);
 		else
 		{
-			current = n;
-			print_number(current / 10);
-			_putchar('0' + (current % 10));
+			print_number(n / 10);
+			_putchar('0' + (n % 10));
 		}
 	}
 }
