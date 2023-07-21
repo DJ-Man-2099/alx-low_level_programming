@@ -18,11 +18,7 @@ void print_number(int n)
 		_putchar('-');
 		current = -current;
 	}
-	if (current < 10)
-		_putchar('0' + n);
-	else
-	{
+	if (current > 9)
 		print_number(current / 10);
-		_putchar('0' + (current % 10));
-	}
+	_putchar('0' + (current % 10));
 }
