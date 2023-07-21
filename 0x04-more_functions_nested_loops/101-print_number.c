@@ -12,6 +12,7 @@
 void print_number(int n)
 {
 	unsigned int current = n;
+
 	if (n == 0)
 		_putchar('0');
 
@@ -19,7 +20,7 @@ void print_number(int n)
 	{
 		_putchar('-');
 		current = -current;
-	}		
+	}
 	if (current < 10)
 		_putchar('0' + n);
 	else
@@ -27,5 +28,4 @@ void print_number(int n)
 		print_number(current / 10);
 		_putchar('0' + (current % 10));
 	}
-	
 }
