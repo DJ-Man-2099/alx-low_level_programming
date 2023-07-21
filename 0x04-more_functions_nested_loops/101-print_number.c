@@ -11,19 +11,16 @@
 
 void print_number(int n)
 {
+	unsigned int current;
+
 	if (n == 0)
 		_putchar('0');
 
 	else if (n < 0)
 	{
 		_putchar('-');
-		if (n > -10)
-			_putchar('0' - (-n));
-		else
-		{
-			print_number((-n) / 10);
-			_putchar('0' + ((-n) % 10));
-		}
+		current = -n;
+		print_number(current);
 	}
 
 	else
@@ -32,8 +29,9 @@ void print_number(int n)
 			_putchar('0' + n);
 		else
 		{
-			print_number(n / 10);
-			_putchar('0' + (n % 10));
+			current = n;
+			print_number(current / 10);
+			_putchar('0' + (current % 10));
 		}
 	}
 }
