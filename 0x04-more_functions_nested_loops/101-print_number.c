@@ -11,27 +11,27 @@
 
 void print_number(int n)
 {
-        unsigned int current;
+	unsigned int current;
 
-        if (n == 0)
-                _putchar('0');
+	if (n == 0)
+		_putchar('0');
 
-        else if (n < 0)
-        {
-                _putchar('-');
-                current = -n;
-                print_number(current);
-        }
+	else if (n < 0)
+	{
+		_putchar('-');
+		current = -n;
+		print_number(current);
+	}
 
-        else
-        {
-                if (n < 10)
-                        _putchar('0' + n);
-                else
-                {
-                        current = n;
-                        print_number(current / 10);
-                        _putchar('0' + (current % 10));
-                }
-        }
+	else
+	{
+		if (n < 10)
+			_putchar('0' + n);
+		else
+		{
+			current = n;
+			print_number(current / 10);
+			_putchar('0' + (current % 10));
+		}
+	}
 }
