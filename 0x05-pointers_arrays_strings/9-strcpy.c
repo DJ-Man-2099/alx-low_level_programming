@@ -12,15 +12,26 @@
 
 char *_strcpy(char *dest, char *src)
 {
-	char c, *base;
+	char *base;
 
 	base = dest;
-	do {
-		c = *src;
-		*dest = c;
-		src++;
+
+	if (src[0] == '\0')
+	{
+		printf("empty string\n");
+		*base = '\0';	
+		printf("empty string, too\n");
+		return (base);
+	}	
+
+	while (*src != '\0') 
+	{
+		printf("entered\n");
+		printf("char is %c\n", *dest);
+		*dest = *src;
+		printf("char is %c\n", *dest);
 		dest++;
-	} while (*src != '\0');
+	}
 
 	*dest = '\0';
 
