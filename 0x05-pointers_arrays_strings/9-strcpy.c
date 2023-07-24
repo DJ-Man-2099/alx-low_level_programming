@@ -26,11 +26,9 @@ char *_strcpy(char *dest, char *src)
 
 	while (*src != '\0') 
 	{
-		printf("entered\n");
-		printf("char is %c\n", *dest);
 		*dest = *src;
-		printf("char is %c\n", *dest);
 		dest++;
+		src++;
 	}
 
 	*dest = '\0';
