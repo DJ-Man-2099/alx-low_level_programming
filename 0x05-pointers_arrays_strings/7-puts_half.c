@@ -1,6 +1,5 @@
 #include "main.h"
 
-
 /**
  * _strlen - pointer function.
  * @s: pointer to a string
@@ -12,17 +11,18 @@
 
 int _strlen(char *s)
 {
-        int charSize, count;
+	int charSize, count;
 
-        charSize = sizeof(*s);
-        count = 0;
-        while (*s != '\0')
-        {
-                count++;
-                s++;
-        }
-        return (charSize * count);
+	charSize = sizeof(*s);
+	count = 0;
+	while (*s != '\0')
+	{
+		count++;
+		s++;
+	}
+	return (charSize * count);
 }
+
 /**
  * puts_half - pointer function.
  * @str: pointer to a string
@@ -40,7 +40,7 @@ void puts_half(char *str)
 	size = _strlen(str);
 	if (size % 2 == 0)
 		start = size / 2;
-	else 
+	else
 		start = (size + 1) / 2;
 	str += start;
 	while (*str != '\0')
