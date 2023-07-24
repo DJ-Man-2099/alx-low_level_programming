@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * reset_to_98 - printer function.
+ * reset_to_98 - pointer function.
  * @n: pointer to an integer
  *
  * updates the value n points to to 98
