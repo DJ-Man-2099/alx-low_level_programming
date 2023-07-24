@@ -18,9 +18,7 @@ char *_strcpy(char *dest, char *src)
 
 	if (src[0] == '\0')
 	{
-		printf("empty string\n");
 		*base = '\0';	
-		printf("empty string, too\n");
 		return (base);
 	}	
 
