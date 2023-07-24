@@ -23,7 +23,7 @@ void temp_print(char *str, bool print)
 	}
 }
 /**
- * print_rev - pointer function.
+ * puts2 - pointer function.
  * @s: pointer to a string
  *
  * prints a string, in reverse
