@@ -1,39 +1,29 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <stdio.h>
+
+/**
+ * main - password breaker
+ *
+ * cracks the password of 101-crackme
+ *
+ * Return: Always 0 (Success)
+ */
 
 int main(void)
 {
-    int i;
-    int randomizer;
-    char password[100];
+	int sum;
+	char c;
 
-    srand((unsigned int)time(NULL));
-    randomizer = rand() % 4;
-    for (i = 0; i < 100; i++)
-    {
-        if (randomizer == 1)
-        {
-            password[i] = 'A' + rand() % 26;
-            randomizer = rand() % 4;
-        }
-        else if (randomizer == 2)
-        {
-            password[i] = 'a' + rand() % 26;
-            randomizer = rand() % 4;
-        }
-        else if (randomizer == 3)
-        {
-            password[i] = '0' + rand() % 10;
-            randomizer = rand() % 4;
-        }
-        else
-        {
-            password[i] = '!' + rand() % 15;
-            randomizer = rand() % 4;
-        }
-    }
-    printf("%s\n", password);
-    return (0);
+	srand(time(NULL));
+	while (sum <= 2772)
+	{
+		c = rand() % 128;
+		if (c == '\0')
+			continue;
+		sum += c;
+		putchar(c);
+	}
+	putchar(2772 - sum);
+	return (0);
 }
-
