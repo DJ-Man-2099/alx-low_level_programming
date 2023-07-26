@@ -31,7 +31,7 @@ char *_strncpy(char *dest, char *src, int n)
 			*dest = *src;
 			src++;
 		}
-		else 
+		else
 		{
 			*dest = '\0';
 		}
