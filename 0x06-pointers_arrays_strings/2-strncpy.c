@@ -24,17 +24,10 @@ char *_strncpy(char *dest, char *src, int n)
 		return (base);
 	}
 
-	for (i = 0; i < n; i++)
+	for (i = 0; i < n && *src != '\0'; i++)
 	{
-		if (*src != '\0')
-		{
-			*dest = *src;
-			src++;
-		}
-		else
-		{
-			*dest = '\0';
-		}
+		*dest = *src;
+		src++;
 		dest++;
 	}
 
