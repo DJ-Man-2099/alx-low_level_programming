@@ -18,12 +18,6 @@ char *_strncpy(char *dest, char *src, int n)
 
 	base = dest;
 
-	if (src[0] == '\0')
-	{
-		*base = '\0';
-		return (base);
-	}
-
 	for (i = 0; i < n; i++)
 	{
 		if (*src != '\0')
