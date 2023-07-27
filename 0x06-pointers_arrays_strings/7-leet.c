@@ -11,20 +11,21 @@
 
 char *leet(char *str)
 {
+	int i = 0;
+
 	char *base = str;
+	char *symbols = "aeotl", *numbers = "43071";
 
 	while (*str != '\0')
 	{
-		if (*str == 'a' || *str == 'A')
-			*str = '4';
-		else if (*str == 'e' || *str == 'E')
-			*str = '3';
-		else if (*str == 'o' || *str == 'o')
-			*str = '0';
-		else if (*str == 't' || *str == 't')
-			*str = '7';
-		else if (*str == 'l' || *str == 'L')
-			*str = '1';
+		for (i = 0; i < 5; i++)
+		{
+			if (*str == symbols[i] || *str == symbols[i] - 'a' + 'A')
+			{
+				*str = numbers[i];
+				break;
+			}
+		}
 		str++;
 	}
 	return (base);
