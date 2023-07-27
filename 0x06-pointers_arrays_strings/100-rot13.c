@@ -25,7 +25,7 @@ char *rot13(char *str)
 				isUpper = i % 2;
 				oldCharIndex = i / 2;
 				newCharIndex = (oldCharIndex + 13) % 26;
-				newCharIndex = (newCharIndex * 2) + isUpper;		
+				newCharIndex = (newCharIndex * 2) + isUpper;
 				*str = lower[newCharIndex];
 				break;
 			}
