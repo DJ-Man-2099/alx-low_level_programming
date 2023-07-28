@@ -66,6 +66,9 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 			r--;
 		}
 	}
-	*r = '0' + carry;
+	if (carry == 1)
+		*r = '0' + carry;
+	else
+		r++;
 	return (r);
 }

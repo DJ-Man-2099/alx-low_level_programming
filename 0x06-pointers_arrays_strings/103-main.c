@@ -15,7 +15,7 @@ int main(void)
         char r3[11];
         char *res;
 
-        res = infinite_add(n, m, r, 100);
+        res = infinite_add("2", "2", r, 50);
 	printf("r: %p, res: %p\n", r, res);
         if (res == 0)
         {
