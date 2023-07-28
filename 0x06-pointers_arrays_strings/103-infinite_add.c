@@ -1,6 +1,6 @@
 #include "main.h"
 #include <stdbool.h>
-#include <stdio.h>
+
 /**
  * temp_add - string function
  * @n1: pointer to first integer
@@ -36,7 +36,6 @@ char *baseN2, char **r, char *baseR, int *carry)
 			n2--;
 		(*r)--;
 	}
-	printf("%s\n", *r);
 	return (true);
 }
 /**
@@ -67,14 +66,12 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	r--;
 	if (n1Bigger)
 	{
-		printf("N1 > n2\n");
 		valid = temp_add(n1, n2, baseN1, baseN2, &r, baseR, &carry);
 		if (!valid)
 			return (0);
 	}
 	else
 	{
-		printf("N2 > n1\n");
 		valid = temp_add(n2, n1, baseN2, baseN1, &r, baseR, &carry);
 		if (!valid)
 			return (0);
@@ -83,6 +80,5 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		*r = '0' + carry;
 	else
 		r++;
-	printf("%s\n", r);
 	return (r);
 }
