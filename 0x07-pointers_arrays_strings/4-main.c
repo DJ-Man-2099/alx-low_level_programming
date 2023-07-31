@@ -13,6 +13,12 @@ int main(void)
     char *t;
 
     t = _strpbrk(s, f);
-    printf("%s\n", t);
+    if (t == NULL)
+    {
+	    printf("not found\n");
+    } else
+    {
+    	printf("%s\n", t);
+    }
     return (0);
 }

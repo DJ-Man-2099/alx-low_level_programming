@@ -18,9 +18,9 @@ char *_strpbrk(char *s, char *accept)
 	char *base = s, *baseAccept = accept;
 	bool isDifferent = false;
 
-	while (1)
+	while (*base != '\0')
 	{
-		while (1)
+		while (*baseAccept != '\0')
 		{
 			isDifferent = *base != *baseAccept;
 			if (!isDifferent)
@@ -28,13 +28,7 @@ char *_strpbrk(char *s, char *accept)
 				return (base);
 			}
 			baseAccept++;
-			if (*baseAccept == '\0')
-			{
-				break;
-			}
 		}
-		if (*base == '\0')
-			break;
 		base++;
 		baseAccept = accept;
 	}
