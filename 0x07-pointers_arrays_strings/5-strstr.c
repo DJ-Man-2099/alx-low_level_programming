@@ -26,6 +26,7 @@ char *_strstr(char *haystack, char *needle)
 			firstOccurence = base;
 			while (*baseAccept != '\0')
 			{
+				printf("base: %c, baseAccept: %c\n", *base, *baseAccept); 
 				isDifferent = *base != *baseAccept;
 				if (isDifferent)
 					break;
@@ -34,9 +35,11 @@ char *_strstr(char *haystack, char *needle)
 			}
 			if (!isDifferent)
 				return (firstOccurence);
+		} else 
+		{
+			base++;
+			baseAccept = needle;
 		}
-		base++;
-		baseAccept = needle;
 	}
 	return (NULL);
 }
