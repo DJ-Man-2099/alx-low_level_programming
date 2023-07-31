@@ -1,5 +1,5 @@
 #include "main.h"
-#include <stddef.h>
+#include <stdio.h>
 /**
  * _strchr - string function
  * @s: pointer to string to search
@@ -10,17 +10,18 @@
  * in the string s,
  * or NULL if the character is not found
  *
- * Return: pointer of NULL
+ * Return: pointer or NULL
  */
 
 char *_strchr(char *s, char c)
 {
 
-	do {
+	while (*s != '\0')
+	{
 		if (*s == c)
 			return (s);
 		s++;
-	} while (*s != '\0');
+	}
 
 	return (NULL);
 }
