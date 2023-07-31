@@ -18,6 +18,9 @@ char *_strstr(char *haystack, char *needle)
 	char *base = haystack, *baseAccept = needle, *firstOccurence;
 	bool isDifferent = false;
 
+	if (*baseAccept == '\0')
+		return (base);
+	
 	while (*base != '\0')
 	{
 		isDifferent = *base != *baseAccept;
