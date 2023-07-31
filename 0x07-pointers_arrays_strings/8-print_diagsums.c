@@ -14,11 +14,11 @@
 void print_diagsums(int *a, int size)
 {
 	int i, sum = 0, otherSum = 0;
-	
+
 	for (i = 0; i < size; i++)
 	{
-		sum += *(a + i * (size + 1));
+		sum += *(a + i * size + i);
 		otherSum += *(a + i * size + size - i - 1);
 	}
-	printf("%d, %d", sum, otherSum);
+	printf("%d, %d\n", sum, otherSum);
 }

@@ -20,9 +20,7 @@ int main(void)
         {100, 1012451, 11102, 12545, 214543435},
         {10, 12401, 10452, 11542545, 1214543435},
     };
-    printf("error -2");
     print_diagsums((int *)c3, 3);
-    printf("error -1");
     print_diagsums((int *)c5, 5);
     return (0);
 }
