@@ -20,7 +20,7 @@ char *_strstr(char *haystack, char *needle)
 
 	if (*baseAccept == '\0')
 		return (base);
-	
+
 	while (*base != '\0')
 	{
 		isDifferent = *base != *baseAccept;
