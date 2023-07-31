@@ -16,6 +16,7 @@
 char *_strchr(char *s, char c)
 {
 	char *base = s;
+
 	while (*base != '\0')
 	{
 		if (*base == c)
