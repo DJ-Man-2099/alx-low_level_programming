@@ -34,10 +34,10 @@ char *_strstr(char *haystack, char *needle)
 			}
 			if (!isDifferent)
 				return (firstOccurence);
+			baseAccept = needle;
 		} else
 		{
 			base++;
-			baseAccept = needle;
 		}
 	}
 	return (NULL);
