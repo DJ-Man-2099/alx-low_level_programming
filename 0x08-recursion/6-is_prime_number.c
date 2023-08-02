@@ -33,9 +33,7 @@ int _temp_prime(int n, int test)
  */
 int is_prime_number(int n)
 {
-	if (n == 1 || n == -1)
+	if (n <= 1)
 		return (0);
-	if (n < 0)
-		return (_temp_prime(-n, 2));
 	return (_temp_prime(n, 2));
 }
