@@ -21,7 +21,7 @@ void temp_print(char *str)
 	}
 }
 /**
- * _puts_recursion - pointer function.
+ * _print_rev_recursion - pointer function.
  * @s: pointer to a string
  *
  * prints a string, in reverse
@@ -29,7 +29,7 @@ void temp_print(char *str)
  *
  * Return: void
  */
-void _puts_recursion(char *s)
+void _print_rev_recursion(char *s)
 {
 	temp_print(s);
 	_putchar('\n');
