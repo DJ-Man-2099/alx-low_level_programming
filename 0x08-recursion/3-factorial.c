@@ -2,12 +2,11 @@
 
 /*
  * factorial - pointer function.
- * @s: pointer to a string
+ * @n: pointer to a string
  *
- * prints a string, using recursion
- * followed by a new line
+ * returns the factorial of n
  *
- * Return: void
+ * Return: n!
  */
 int factorial(int n)
 {
