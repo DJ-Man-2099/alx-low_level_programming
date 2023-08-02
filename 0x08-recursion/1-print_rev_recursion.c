@@ -32,5 +32,4 @@ void temp_print(char *str)
 void _print_rev_recursion(char *s)
 {
 	temp_print(s);
-	_putchar('\n');
 }
