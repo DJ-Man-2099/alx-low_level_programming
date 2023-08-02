@@ -31,6 +31,6 @@ void temp_print(char *str)
  */
 void _puts_recursion(char *s)
 {
-	temp_print(s);
+
 	_putchar('\n');
 }
