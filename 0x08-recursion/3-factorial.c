@@ -1,6 +1,6 @@
 #include "main.h"
 
-/*
+/**
  * factorial - pointer function.
  * @n: pointer to an integer
  *
