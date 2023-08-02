@@ -2,7 +2,7 @@
 
 /*
  * factorial - pointer function.
- * @n: pointer to a string
+ * @n: pointer to an integer
  *
  * returns the factorial of n
  *
