@@ -68,6 +68,11 @@ char **strtow(char *str)
 	char **words, **words_base, *word, *temp;
 	int word_length, words_count;
 
+	if (str == NULL || str == "")
+	{
+		return (NULL);
+	}
+
 	words_count = get_words_count(str);
 	words = (char **)malloc((words_count + 1) * sizeof(char *));
 	if (words == NULL)
