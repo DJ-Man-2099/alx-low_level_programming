@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdbool.h>
 #include "main.h"
 /**
  * get_length - array function
@@ -32,7 +33,7 @@ int get_length(char *s1)
  * Return: pointer to array,
  * Null at error
  */
-char *str_concat(char *s1, char *s2)
+char *str_concat(char *s1, char *s2, bool is_end)
 {
 	int l1, l2, i;
 	char *b1 = s1, *b2 = s2, *array;
@@ -69,7 +70,10 @@ char *str_concat(char *s1, char *s2)
 		}
 	}
 	array[l1 + l2] = '\n';
-	array[l1 + l2 + 1] = '\0';
+	if (is_end)
+	{
+		array[l1 + l2 + 1] = '\0';
+	}
 
 	return (array);
 }
@@ -95,7 +99,7 @@ char *argstostr(int ac, char **av)
 	for (i = 1; i < ac; i++)
 	{
 		arg = av[i];
-		str = str_concat(str, arg);
+		str = str_concat(str, arg, i == ac - 1);
 		if (str == NULL)
 		{
 			return (NULL);
