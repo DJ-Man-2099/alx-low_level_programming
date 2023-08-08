@@ -27,6 +27,11 @@ char *_strdup(char *str)
 
 	array = (char *)malloc((length + 1) * sizeof(char));
 
+	if (array == NULL)
+	{
+		return (NULL);
+	}
+
 	for (i = 0; i <= length; i++)
 	{
 		array[i] = base[i];
