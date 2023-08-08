@@ -44,7 +44,7 @@ int **allocate_2d(int width, int height)
 		array[i] = (int *)malloc(width * sizeof(int));
 		if (array[i] == NULL)
 		{
-			free_grid(array, i);
+			free_grid_temp(array, i);
 		}
 	}
 
