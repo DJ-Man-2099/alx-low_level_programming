@@ -21,58 +21,7 @@ int get_length(char *s1)
 			s1++;
 		}
 	}
-	return (l1);
-}
-/**
- * str_concat - array function
- * @s1: string to copy
- * @s2: string to copy
- *
- * copies str to a new string
- *
- * Return: pointer to array,
- * Null at error
- */
-char *str_concat(char *s1, char *s2)
-{
-	int l1, l2, i;
-	char *b1 = s1, *b2 = s2, *array;
-
-	if (b1 == NULL)
-	{
-		b1 = "";
-	}
-	if (b2 == NULL)
-	{
-		b2 = "";
-	}
-
-	l1 = get_length(s1);
-
-	l2 = get_length(s2);
-
-	array = (char *)malloc((l1 + l2 + 2) * sizeof(char));
-
-	if (array == NULL)
-	{
-		return (NULL);
-	}
-
-	for (i = 0; i < l1 + l2; i++)
-	{
-		if (i < l1)
-		{
-			array[i] = b1[i];
-		}
-		else
-		{
-			array[i] = b2[i - l1];
-		}
-	}
-	array[l1 + l2] = '\n';
-	array[l1 + l2 + 1] = '\0';
-
-	return (array);
+	return (l1 + 1);
 }
 /**
  * argstostr - array function
@@ -85,8 +34,8 @@ char *str_concat(char *s1, char *s2)
  */
 char *argstostr(int ac, char **av)
 {
-	int i;
-	char *arg, *str = "";
+	int i, length = 0;
+	char *arg, *str, *base;
 
 	if (ac == 0 || av == NULL)
 	{
@@ -96,11 +45,26 @@ char *argstostr(int ac, char **av)
 	for (i = 0; i < ac; i++)
 	{
 		arg = av[i];
-		str = str_concat(str, arg);
-		if (str == NULL)
-		{
-			return (NULL);
-		}
+		length += get_length(arg);
 	}
-	return (str);
+	str = (char *)malloc(length * sizeof(char) + 1);
+	if (str == NULL)
+	{
+		return (NULL);
+	}
+	base = str;
+	for (i = 0; i < ac; i++)
+	{
+		arg = av[i];
+		while (*arg != '\0')
+		{
+			*str = *arg;
+			str++;
+			arg++;
+		}
+		*str = '\n';
+		str++;
+	}
+	*str = '\0';
+	return (base);
 }
