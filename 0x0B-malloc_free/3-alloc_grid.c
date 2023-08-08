@@ -1,6 +1,56 @@
 #include <stdlib.h>
 #include "main.h"
 /**
+ * free_grid_temp - array function
+ * @grid: array to free
+ * @height: dimension
+ *
+ * frees a 2d array
+ *
+ * Return: void
+ */
+void free_grid_temp(int **grid, int height)
+{
+	int i;
+
+	for (i = height - 1; i >= 0; i--)
+	{
+
+		free(grid[i]);
+	}
+	free(grid);
+}
+/**
+ * allocate_2d - array function
+ * @width: dimension
+ * @height: dimension
+ *
+ * creates a 2d array
+ *
+ * Return: pointer to array,
+ * Null at error
+ */
+int **allocate_2d(int width, int height)
+{
+	int i, **array;
+
+	array = (int **)malloc(sizeof(int *) * height);
+	if (array == NULL)
+	{
+		return (NULL);
+	}
+	for (i = 0; i < height; i++)
+	{
+		array[i] = (int *)malloc(width * sizeof(int));
+		if (array[i] == NULL)
+		{
+			free_grid(array, i);
+		}
+	}
+
+	return (array);
+}
+/**
  * alloc_grid - array function
  * @width: dimension
  * @height: dimension
@@ -19,25 +69,11 @@ int **alloc_grid(int width, int height)
 		return (NULL);
 	}
 
-	array = (int **)malloc(sizeof(int *) * height);
+	array = allocate_2d(width, height);
+
 	if (array == NULL)
 	{
 		return (NULL);
-	}
-	for (i = 0; i < height; i++)
-	{
-		array[i] = (int *)malloc(width * sizeof(int));
-		if (array[i] == NULL)
-		{
-			i--;
-			while (i >= 0)
-			{
-				free(array[i]);
-				i--;
-			}
-			free(array);
-			return (NULL);
-		}
 	}
 
 	for (i = 0; i < height; i++)
