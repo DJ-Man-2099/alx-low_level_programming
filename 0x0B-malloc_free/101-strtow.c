@@ -56,6 +56,30 @@ int get_word_length(char *s1)
 	return (l1);
 }
 /**
+ * copy_word - array function
+ * @s2: string to copy
+ *
+ * gets length of string
+ *
+ * Return: length of s1
+ */
+char *copy_word(char **s2)
+{
+	char *temp, *base_temp;
+	int word_length = get_word_length(*s2);
+
+	temp = (char *)malloc((word_length + 1) * sizeof(char));
+	base_temp = temp;
+	while (**s2 != ' ' && **s2 != '\0')
+	{
+		*temp = **s2;
+		temp++;
+		(*s2)++;
+	}
+	*temp = '\0';
+	return (base_temp);
+}
+/**
  * strtow - array function
  * @str: string to separate
  *
@@ -65,40 +89,29 @@ int get_word_length(char *s1)
  */
 char **strtow(char *str)
 {
-	char **words, **words_base, *word, *temp;
-	int word_length, words_count;
+	char **words, **words_base, *word;
+	int words_count;
 
-	if (str == NULL || *str == '\0')
+	if (str == NULL)
 	{
 		return (NULL);
 	}
-
 	words_count = get_words_count(str);
 	words = (char **)malloc((words_count + 1) * sizeof(char *));
-	if (words == NULL)
+	if (words == NULL || words_count == 0)
 	{
 		return (NULL);
 	}
-
 	words_base = words;
 	while (*str != '\0')
 	{
 		if (*str != ' ')
 		{
-			word_length = get_word_length(str);
-			word = (char *)malloc((word_length + 1) * sizeof(char));
+			word = copy_word(&str);
 			if (word == NULL)
 			{
 				return (NULL);
 			}
-			temp = word;
-			while (*str != ' ' && *str != '\0')
-			{
-				*temp = *str;
-				temp++;
-				str++;
-			}
-			*temp = '\0';
 			*words = word;
 			words++;
 		}
