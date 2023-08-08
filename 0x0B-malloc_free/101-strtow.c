@@ -76,7 +76,7 @@ char *copy_word(char **s2)
 		temp++;
 		(*s2)++;
 	}
-	//*temp = '\0';
+	*temp = '\0';
 	return (base_temp);
 }
 /**
