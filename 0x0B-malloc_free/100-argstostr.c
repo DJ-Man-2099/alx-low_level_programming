@@ -102,6 +102,5 @@ char *argstostr(int ac, char **av)
 			return (NULL);
 		}
 	}
-	str = str_concat(str, "");
 	return (str);
 }
