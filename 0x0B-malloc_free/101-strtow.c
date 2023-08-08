@@ -22,12 +22,15 @@ int get_words_count(char *s1)
 			if (*base != ' ')
 			{
 				l1++;
-				while (*(base + 1) != ' ')
+				while (*base != ' ' && *base != ' ')
 				{
 					base++;
 				}
 			}
-			base++;
+			else
+			{
+				base++;
+			}
 		}
 	}
 	return (l1);
