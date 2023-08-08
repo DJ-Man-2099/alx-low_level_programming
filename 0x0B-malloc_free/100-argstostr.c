@@ -51,14 +51,14 @@ char *str_concat(char *s1, char *s2)
 
 	l2 = get_length(s2);
 
-	array = (char *)malloc((l1 + l2 + 1) * sizeof(char));
+	array = (char *)malloc((l1 + l2 + 2) * sizeof(char));
 
 	if (array == NULL)
 	{
 		return (NULL);
 	}
 
-	for (i = 0; i <= l1 + l2; i++)
+	for (i = 0; i < l1 + l2; i++)
 	{
 		if (i < l1)
 		{
@@ -69,6 +69,8 @@ char *str_concat(char *s1, char *s2)
 			array[i] = b2[i - l1];
 		}
 	}
+	array[l1 + l2] = '\n';
+	array[l1 + l2 + 1] = '\0';
 
 	return (array);
 }
@@ -83,7 +85,7 @@ char *str_concat(char *s1, char *s2)
  */
 char *argstostr(int ac, char **av)
 {
-	int i, length;
+	int i;
 	char *arg, *str = "";
 
 	if (ac == 0 || av == NULL)
@@ -99,9 +101,6 @@ char *argstostr(int ac, char **av)
 		{
 			return (NULL);
 		}
-		length = get_length(str);
-		str[length] = '\n';
-		str[length + 1] = '\0';
 	}
 	str = str_concat(str, "");
 	return (str);
