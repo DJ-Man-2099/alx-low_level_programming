@@ -50,7 +50,7 @@ int get_word_length(char *s1)
 
 	if (base != NULL)
 	{
-		while (*base != ' ')
+		while (*base != ' ' && *base != '\0')
 		{
 			l1++;
 			base++;
