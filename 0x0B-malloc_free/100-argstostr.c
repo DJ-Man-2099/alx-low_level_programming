@@ -39,6 +39,8 @@ char *str_concat(char *s1, char *s2)
 	int l1, l2, i;
 	char *b1 = s1, *b2 = s2, *array;
 
+	printf("str: %s, arg: %s\n", s1, s2);
+
 	if (b1 == NULL)
 	{
 		b1 = "";
@@ -102,6 +104,7 @@ char *argstostr(int ac, char **av)
 		}
 		length = get_length(str);
 		str[length] = '\n';
+		str[length + 1] = '\0';
 	}
 	str = str_concat(str, "");
 	return (str);
