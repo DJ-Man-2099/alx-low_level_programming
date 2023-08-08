@@ -87,7 +87,7 @@ char **strtow(char *str)
 				return (NULL);
 			}
 			temp = word;
-			while (*str != ' ')
+			while (*str != ' ' && *str != '\0')
 			{
 				*temp = *str;
 				temp++;
@@ -97,7 +97,10 @@ char **strtow(char *str)
 			*words = word;
 			words++;
 		}
-		str++;
+		else
+		{
+			str++;
+		}
 	}
 	words = NULL;
 	return (words_base);
