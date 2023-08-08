@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include <stdbool.h>
 #include "main.h"
 /**
@@ -38,8 +37,6 @@ char *str_concat(char *s1, char *s2)
 {
 	int l1, l2, i;
 	char *b1 = s1, *b2 = s2, *array;
-
-	printf("str: %s, arg: %s\n", s1, s2);
 
 	if (b1 == NULL)
 	{
