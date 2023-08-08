@@ -92,7 +92,7 @@ char *argstostr(int ac, char **av)
 		return (NULL);
 	}
 
-	for (i = 1; i < ac; i++)
+	for (i = 0; i < ac; i++)
 	{
 		arg = av[i];
 		str = str_concat(str, arg);
