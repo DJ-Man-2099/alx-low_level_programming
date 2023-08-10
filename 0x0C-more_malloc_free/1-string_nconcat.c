@@ -40,36 +40,29 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		s1 = "";
 		base_s1 = "";
 	}
-
 	if (s2 == NULL)
 	{
 		s2 = "";
 		base_s2 = "";
 	}
-
 	s1_length = _strlen(base_s1);
-
 	ptr = malloc((n + s1_length) * (sizeof(*ptr)));
-
 	if (ptr == NULL)
 	{
 		return (NULL);
 	}
-
 	base_ptr = ptr;
-
 	while (*base_s1 != '\0')
 	{
 		*base_ptr = *base_s1;
 		base_ptr++;
 		base_s1++;
 	}
-
 	for (i = 0; i < n && base_s2[i] != '\0'; i++)
 	{
 		*base_ptr = base_s2[i];
 		base_ptr++;
 	}
-
+	*base_ptr = '\0';
 	return (ptr);
 }
