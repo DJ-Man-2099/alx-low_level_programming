@@ -52,15 +52,20 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		return (NULL);
 	}
 	base_ptr = ptr;
-	while (*base_s1 != '\0')
+	for (i = 0; i < s1_length + n; i++)
 	{
-		*base_ptr = *base_s1;
-		base_ptr++;
-		base_s1++;
-	}
-	for (i = 0; i < n && base_s2[i] != '\0'; i++)
-	{
-		*base_ptr = base_s2[i];
+		if (i < s1_length)
+		{
+			*base_ptr = base_s1[i];
+		}
+		else
+		{
+			if (base_s2[i - s1_length] == '\0')
+			{
+				break;
+			}
+			*base_ptr = base_s2[i - s1_length];
+		}
 		base_ptr++;
 	}
 	*base_ptr = '\0';
