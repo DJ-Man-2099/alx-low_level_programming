@@ -65,11 +65,13 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		base_s1++;
 	}
 
-	for (i = 0; i < n && *s2 != '\0'; i++)
+	for (i = 0; i < n && base_s2[i] != '\0'; i++)
 	{
 		*base_ptr = base_s2[i];
 		base_ptr++;
 	}
+
+	*base_ptr = '\0';
 
 	return (ptr);
 }
