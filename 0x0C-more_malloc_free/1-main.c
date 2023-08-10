@@ -12,7 +12,7 @@ int main(void)
 {
 	char *concat;
 
-	concat = string_nconcat("Best      ", "School !!!", INT_MAX);
+	concat = string_nconcat("BEST", "SCHOOL", 20);
 	printf("%s\n", concat);
 	free(concat);
 	return (0);

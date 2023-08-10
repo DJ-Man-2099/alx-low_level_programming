@@ -46,7 +46,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		base_s2 = "";
 	}
 	s1_length = _strlen(base_s1);
-	ptr = malloc((n + s1_length) * (sizeof(*ptr)));
+	ptr = malloc((n + s1_length + 1) * (sizeof(*ptr)));
 	if (ptr == NULL)
 	{
 		return (NULL);
