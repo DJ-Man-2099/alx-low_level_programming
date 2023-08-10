@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include "main.h"
-#include <string.h>
 /**
  * array_range - memory function
  * @min: min value in array
@@ -27,9 +26,9 @@ int *array_range(int min, int max)
 		return (NULL);
 	}
 
-	for (i = min; i <= max; i++)
+	for (i = 0; i < length; i++)
 	{
-		ptr[i] = i;
+		ptr[i] = i + min;
 	}
 
 	return (ptr);
