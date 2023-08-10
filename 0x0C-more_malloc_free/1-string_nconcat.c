@@ -71,7 +71,5 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		base_ptr++;
 	}
 
-	*base_ptr = '\0';
-
 	return (ptr);
 }
