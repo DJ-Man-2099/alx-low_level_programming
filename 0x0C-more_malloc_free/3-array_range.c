@@ -2,30 +2,35 @@
 #include "main.h"
 #include <string.h>
 /**
- * _calloc - memory function
- * @nmemb: number of elements
- * @size: size of element
+ * array_range - memory function
+ * @min: min value in array
+ * @max: max value in array
  *
- * reserves array of size size * nmemb,
+ * creates array consists of [min, max],
  *
  * Return: pointer to array
  */
-void *_calloc(unsigned int nmemb, unsigned int size)
+int *array_range(int min, int max)
 {
-	void *ptr;
+	int *ptr, length, i;
 
-	if (nmemb == 0 || size == 0)
+	if (min > max)
 	{
 		return (NULL);
 	}
 
-	ptr = malloc(nmemb * size);
+	length = max - min + 1;
+
+	ptr = malloc(length * sizeof(*ptr));
 	if (ptr == NULL)
 	{
 		return (NULL);
 	}
 
-	memset(ptr, 0, nmemb * size);
+	for (i = min; i <= max; i++)
+	{
+		ptr[i] = i;
+	}
 
 	return (ptr);
 }
