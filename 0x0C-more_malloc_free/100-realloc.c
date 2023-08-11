@@ -2,7 +2,7 @@
 #include "main.h"
 #include <string.h>
 /**
- * _realloc - memory function
+ * _realloc - meory function
  * @ptr: pointer to old memory
  * @old_size: size of old memory
  * @new_size: size of new memory
