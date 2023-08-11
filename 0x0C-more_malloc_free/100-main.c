@@ -42,14 +42,8 @@ int main(void)
 	int i;
 
 	p = malloc(sizeof(char) * 10);
-	p = _realloc(p, sizeof(char) * 25, 0);
+	p = _realloc(p, sizeof(char) * 10, sizeof(char) * 98);
 	i = 0;
-	if (p == NULL)
-	{
-		printf("Failed\n");
-		return (0);
-	}
-
 	while (i < 98)
 	{
 		p[i++] = 98;
