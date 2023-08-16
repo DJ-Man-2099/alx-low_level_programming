@@ -10,10 +10,10 @@
  *
  * Return: Always 0 (Success)
  */
-int main(int argc, char const *argv[])
+int main(int argc, char *argv[])
 {
 	int a, b, (*func)(int, int);
-	char op;
+	char *op;
 
 	if (argc != 4)
 	{
@@ -22,8 +22,8 @@ int main(int argc, char const *argv[])
 	}
 	a = atoi(argv[1]);
 	b = atoi(argv[3]);
-	op = *argv[2];
-	func = get_op_func(&op);
+	op = argv[2];
+	func = get_op_func(op);
 	if (func == NULL)
 	{
 		printf("Error\n");
