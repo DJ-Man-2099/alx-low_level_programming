@@ -34,12 +34,9 @@ void print_all(const char *const format, ...)
 			string = va_arg(lists, char *);
 			if (string == NULL)
 			{
-				printf("(nil)");
+				string = "(nil)";
 			}
-			else
-			{
-				printf("%s", string);
-			}
+			printf("%s", string);
 			break;
 		}
 		if ((format[i] == 'c' || format[i] == 'i' || format[i] == 'f' ||

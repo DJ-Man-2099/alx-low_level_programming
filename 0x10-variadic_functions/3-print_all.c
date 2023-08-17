@@ -11,28 +11,28 @@
  *
  * Return: void *
  */
-void print_value(va_list *string_array, char format)
+void print_value(va_list lists, char format)
 {
-	char *temp;
+	char *string;
 
 	switch (format)
 	{
+	case 'c':
+		printf("%c", (char)va_arg(lists, int));
+		break;
 	case 'i':
-		printf("%d", va_arg(*string_array, int));
+		printf("%d", va_arg(lists, int));
 		break;
 	case 'f':
-		printf("%f", va_arg(*string_array, double));
+		printf("%f", va_arg(lists, double));
 		break;
 	case 's':
-		temp = va_arg(*string_array, char *);
-		if (temp == NULL)
+		string = va_arg(lists, char *);
+		if (string == NULL)
 		{
-			temp = "(nil)";
+			string = "(nil)";
 		}
-		printf("%s", temp);
-		break;
-	case 'c':
-		printf("%c", (char)va_arg(*string_array, int));
+		printf("%s", string);
 		break;
 	}
 }
@@ -58,7 +58,7 @@ void print_all(const char *const format, ...)
 		{
 			i++;
 		}
-		print_value(&string_array, format[i]);
+		print_value(string_array, format[i]);
 		i++;
 		while (format[i] != '\0')
 		{
@@ -69,7 +69,7 @@ void print_all(const char *const format, ...)
 			case 'f':
 			case 's':
 				printf(", ");
-				print_value(&string_array, format[i]);
+				print_value(string_array, format[i]);
 				break;
 
 			default:
