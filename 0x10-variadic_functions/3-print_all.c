@@ -51,29 +51,28 @@ void print_all(const char *const format, ...)
 	va_list string_array;
 
 	va_start(string_array, format);
-	if (format != NULL)
-	{
-		while (format[i] != '\0')
-		{
-			switch (format[i])
-			{
-			case 'c':
-			case 'i':
-			case 'f':
-			case 's':
-				print_value(string_array, format[i]);
-				break;
 
-			default:
-				break;
-			}
-			if ((format[i] == 'c' || format[i] == 'i' || format[i] == 'f' ||
+	while (format != NULL && format[i] != '\0')
+	{
+		switch (format[i])
+		{
+		case 'c':
+		case 'i':
+		case 'f':
+		case 's':
+			print_value(string_array, format[i]);
+			break;
+
+		default:
+			break;
+		}
+		if ((format[i] == 'c' || format[i] == 'i' || format[i] == 'f' ||
 			 format[i] == 's') &&
 			format[(i + 1)] != '\0')
 			printf(", ");
-			i++;
-		}
+		i++;
 	}
+
 	va_end(string_array);
 	printf("\n");
 }
