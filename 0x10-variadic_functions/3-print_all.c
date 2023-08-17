@@ -13,25 +13,26 @@
  */
 void print_value(va_list string_array, char format)
 {
-	char temp_format[] = "%c";
 	char *temp;
 
-	sprintf(temp_format, "%%%c", format);
 	switch (format)
 	{
+	case 'i':
+		printf("%d", va_arg(string_array, int));
+		break;
 	case 'f':
-		printf(temp_format, va_arg(string_array, double));
+		printf("%f", va_arg(string_array, double));
 		break;
 	case 's':
-		temp = va_arg(string_array, void *);
+		temp = va_arg(string_array, char *);
 		if (temp == NULL)
 		{
 			temp = "(nil)";
 		}
-		printf(temp_format, temp);
+		printf("%s", temp);
 		break;
 	default:
-		printf(temp_format, va_arg(string_array, void *));
+		printf("%c", (char)va_arg(string_array, int));
 		break;
 	}
 }
