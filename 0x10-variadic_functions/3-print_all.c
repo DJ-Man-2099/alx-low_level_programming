@@ -70,7 +70,7 @@ void print_all(const char *const format, ...)
 				printf(", ");
 				print_value(string_array, format[i]);
 				break;
-			
+
 			default:
 				break;
 			}
