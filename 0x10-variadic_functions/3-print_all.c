@@ -47,12 +47,12 @@ void print_value(va_list string_array, char format)
  */
 void print_all(const char *const format, ...)
 {
+	unsigned int i = 0;
+	va_list string_array;
+
+	va_start(string_array, format);
 	if (format != NULL)
 	{
-		unsigned int i = 0;
-		va_list string_array;
-
-		va_start(string_array, format);
 		while (!(format[i] == 'c' || format[i] == 'i'
 		|| format[i] == 'f' || format[i] == 's'))
 		{
@@ -77,7 +77,7 @@ void print_all(const char *const format, ...)
 			}
 			i++;
 		}
-		va_end(string_array);
 	}
+	va_end(string_array);
 	printf("\n");
 }
