@@ -31,7 +31,7 @@ void print_value(va_list *string_array, char format)
 		}
 		printf("%s", temp);
 		break;
-	default:
+	case 'c':
 		printf("%c", (char)va_arg(*string_array, int));
 		break;
 	}
