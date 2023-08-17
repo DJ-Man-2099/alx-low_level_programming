@@ -49,6 +49,7 @@ void print_all(const char *const format, ...)
 {
 	unsigned int i = 0;
 	va_list string_array;
+	char *temp;
 
 	va_start(string_array, format);
 	if (format != NULL)
@@ -58,18 +59,51 @@ void print_all(const char *const format, ...)
 		{
 			i++;
 		}
-		print_value(string_array, format[i]);
+		switch (format[i])
+		{
+		case 'i':
+			printf("%d", va_arg(string_array, int));
+			break;
+		case 'f':
+			printf("%f", va_arg(string_array, double));
+			break;
+		case 's':
+			temp = va_arg(string_array, char *);
+			if (temp == NULL)
+			{
+				temp = "(nil)";
+			}
+			printf("%s", temp);
+			break;
+		default:
+			printf("%c", (char)va_arg(string_array, int));
+			break;
+		}
 		i++;
 		while (format[i] != '\0')
 		{
 			switch (format[i])
 			{
-			case 'c':
 			case 'i':
+				printf(", ");
+				printf("%d", va_arg(string_array, int));
+				break;
 			case 'f':
+				printf(", ");
+				printf("%f", va_arg(string_array, double));
+				break;
 			case 's':
 				printf(", ");
-				print_value(string_array, format[i]);
+				temp = va_arg(string_array, char *);
+				if (temp == NULL)
+				{
+					temp = "(nil)";
+				}
+				printf("%s", temp);
+				break;
+			case 'c':
+				printf(", ");
+				printf("%c", (char)va_arg(string_array, int));
 				break;
 
 			default:
