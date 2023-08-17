@@ -53,8 +53,7 @@ void print_all(const char *const format, ...)
 		va_list string_array;
 
 		va_start(string_array, format);
-		while (!(format[i] == 'c' || format[i] == 'i'
-		|| format[i] == 'f' || format[i] == 's'))
+		while (!(format[i] == 'c' || format[i] == 'i' || format[i] == 'f' || format[i] == 's'))
 		{
 			i++;
 		}
