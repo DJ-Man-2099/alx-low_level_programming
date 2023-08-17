@@ -66,7 +66,7 @@ void print_all(const char *const format, ...)
 				break;
 
 			default:
-				printf(temp_format, va_arg(string_array, void *));
+				printf(temp_format, get_value(format[i], va_arg(string_array, void *)));
 				break;
 			}
 		}
