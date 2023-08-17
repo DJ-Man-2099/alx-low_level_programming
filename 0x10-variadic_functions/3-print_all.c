@@ -61,11 +61,18 @@ void print_all(const char *const format, ...)
 		i++;
 		while (format[i] != '\0')
 		{
-			if (format[i] == 'c' || format[i] == 'i'
-			|| format[i] == 'f' || format[i] == 's')
+			switch (format[i])
 			{
+			case 'c':
+			case 'i':
+			case 'f':
+			case 's':
 				printf(", ");
 				print_value(string_array, format[i]);
+				break;
+			
+			default:
+				break;
 			}
 			i++;
 		}
