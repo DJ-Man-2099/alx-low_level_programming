@@ -18,7 +18,7 @@ void print_value(va_list string_array, char format)
 	switch (format)
 	{
 	case 'i':
-		printf("%i", va_arg(string_array, int));
+		printf("%d", va_arg(string_array, int));
 		break;
 	case 'f':
 		printf("%f", va_arg(string_array, double));
@@ -78,6 +78,6 @@ void print_all(const char *const format, ...)
 			i++;
 		}
 	}
-	va_end(string_array);
 	printf("\n");
+	va_end(string_array);
 }
