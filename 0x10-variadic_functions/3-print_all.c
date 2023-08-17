@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdbool.h>
 /**
  * print_value - variadic function
  * @string_array: string
@@ -18,7 +19,7 @@ void print_value(va_list string_array, char format)
 	switch (format)
 	{
 	case 'i':
-		printf("%i", va_arg(string_array, int));
+		printf("%d", va_arg(string_array, int));
 		break;
 	case 'f':
 		printf("%f", va_arg(string_array, double));
@@ -51,9 +52,11 @@ void print_all(const char *const format, ...)
 	{
 		unsigned int i = 0;
 		va_list string_array;
+		bool isFormat = (format[i] == 'c' || format[i] == 'i'
+		|| format[i] == 'f' || format[i] == 's');
 
 		va_start(string_array, format);
-		while (!(format[i] == 'c' || format[i] == 'i' || format[i] == 'f' || format[i] == 's'))
+		while (!isFormat)
 		{
 			i++;
 		}
@@ -76,7 +79,7 @@ void print_all(const char *const format, ...)
 			}
 			i++;
 		}
-		va_end(string_array);
 		printf("\n");
+		va_end(string_array);
 	}
 }
