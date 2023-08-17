@@ -11,28 +11,28 @@
  *
  * Return: void *
  */
-void print_value(va_list lists, char format)
+void print_value(va_list string_array, char format)
 {
-	char *string;
+	char *temp;
 
 	switch (format)
 	{
-	case 'c':
-		printf("%c", (char)va_arg(lists, int));
-		break;
 	case 'i':
-		printf("%d", va_arg(lists, int));
+		printf("%d", va_arg(string_array, int));
 		break;
 	case 'f':
-		printf("%f", va_arg(lists, double));
+		printf("%f", va_arg(string_array, double));
 		break;
 	case 's':
-		string = va_arg(lists, char *);
-		if (string == NULL)
+		temp = va_arg(string_array, char *);
+		if (temp == NULL)
 		{
-			string = "(nil)";
+			temp = "(nil)";
 		}
-		printf("%s", string);
+		printf("%s", temp);
+		break;
+	default:
+		printf("%c", (char)va_arg(string_array, int));
 		break;
 	}
 }
