@@ -19,7 +19,7 @@ void print_value(va_list string_array, char format)
 	switch (format)
 	{
 	case 'i':
-		printf("%d", va_arg(string_array, int));
+		printf("%i", va_arg(string_array, int));
 		break;
 	case 'f':
 		printf("%f", va_arg(string_array, double));
