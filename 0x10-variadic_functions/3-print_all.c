@@ -3,21 +3,37 @@
 #include <stdio.h>
 #include <string.h>
 /**
- * get_value - variadic function
- * @format: type of string
- * @string: string
+ * print_value - variadic function
+ * @string_array: string
+ * @format: format of string
  *
  * gets the required argument
  *
  * Return: void *
  */
-void *get_value(char const format, void *string)
+void print_value(va_list string_array, char format)
 {
-	if (format == 's' && string == NULL)
+	char temp_format[] = "%c";
+	char *temp;
+
+	sprintf(temp_format, "%%%c", format);
+	switch (format)
 	{
-		string = "(nil)";
+	case 'f':
+		printf(temp_format, va_arg(string_array, double));
+		break;
+	case 's':
+		temp = va_arg(string_array, void *);
+		if (temp == NULL)
+		{
+			temp = "(nil)";
+		}
+		printf(temp_format, temp);
+		break;
+	default:
+		printf(temp_format, va_arg(string_array, void *));
+		break;
 	}
-	return (string);
 }
 /**
  * print_all - variadic function
@@ -34,43 +50,22 @@ void print_all(const char *const format, ...)
 	{
 		unsigned int i = 0;
 		va_list string_array;
-		char temp_format[] = "%c";
 
 		va_start(string_array, format);
-
-		while (!(format[i] == 'c' || format[i] == 'i' || format[i] == 'f' || format[i] == 's'))
+		while (!(format[i] == 'c' || format[i] == 'i'
+		|| format[i] == 'f' || format[i] == 's'))
 		{
-			printf("%c", format[i]);
 			i++;
 		}
-		sprintf(temp_format, "%%%c", format[i]);
-		switch (format[i])
-		{
-		case 'f':
-			printf(temp_format, va_arg(string_array, double));
-			break;
-
-		default:
-			printf(temp_format, get_value(format[i], va_arg(string_array, void *)));
-			break;
-		}
+		print_value(string_array, format[i]);
 		i++;
 		while (format[i] != '\0')
 		{
-			if (format[i] == 'c' || format[i] == 'i' || format[i] == 'f' || format[i] == 's')
+			if (format[i] == 'c' || format[i] == 'i'
+			|| format[i] == 'f' || format[i] == 's')
 			{
 				printf(", ");
-				sprintf(temp_format, "%%%c", format[i]);
-				switch (format[i])
-				{
-				case 'f':
-					printf(temp_format, va_arg(string_array, double));
-					break;
-
-				default:
-					printf(temp_format, get_value(format[i], va_arg(string_array, void *)));
-					break;
-				}
+				print_value(string_array, format[i]);
 			}
 			i++;
 		}
