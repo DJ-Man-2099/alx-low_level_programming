@@ -7,6 +7,6 @@
  */
 int main(void)
 {
-	print_all("cefi", NULL, 3.5, 3);
+	print_all("efsi", 3.5, NULL, 3);
 	return (0);
 }
