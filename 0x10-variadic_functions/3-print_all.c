@@ -4,8 +4,8 @@
 #include <string.h>
 /**
  * get_value - variadic function
- * @format: type of argument
- * @string_array: arguments
+ * @format: type of string
+ * @string: string
  *
  * gets the required argument
  *
@@ -37,7 +37,8 @@ void print_all(const char *const format, ...)
 
 	va_start(string_array, format);
 
-	while (!(format[i] == 'c' || format[i] == 'i' || format[i] == 'f' || format[i] == 's'))
+	while (!(format[i] == 'c' || format[i] == 'i'
+	|| format[i] == 'f' || format[i] == 's'))
 	{
 		printf("%c", format[i]);
 		i++;
@@ -48,7 +49,8 @@ void print_all(const char *const format, ...)
 	i++;
 	while (format[i] != '\0')
 	{
-		if (format[i] == 'c' || format[i] == 'i' || format[i] == 'f' || format[i] == 's')
+		if (format[i] == 'c' || format[i] == 'i'
+		|| format[i] == 'f' || format[i] == 's')
 		{
 			printf(", ");
 			sprintf(temp_format, "%%%c", format[i]);
