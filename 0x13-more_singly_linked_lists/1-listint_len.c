@@ -1,6 +1,6 @@
 #include "lists.h"
 /**
- * list_len - data structure function
+ * listint_len - data structure function
  * @h: current node
  *
  * calculates the length of list
