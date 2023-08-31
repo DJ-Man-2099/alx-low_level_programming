@@ -6,7 +6,7 @@
  *
  * sets bit at index to 1
  *
- * Return: 0, or -1 (error)
+ * Return: 1 or -1 (error)
  */
 int set_bit(unsigned long int *n, unsigned int index)
 {

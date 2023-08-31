@@ -6,7 +6,7 @@
  *
  * gets bit at index
  *
- * Return: 0, or -1 (error)
+ * Return: 0, 1 or -1 (error)
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
