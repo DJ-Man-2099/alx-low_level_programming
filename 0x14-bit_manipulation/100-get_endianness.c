@@ -1,4 +1,5 @@
 #include "main.h"
+#include <sys/param.h>
 /**
  * get_endianness - bit info function
  *
@@ -9,10 +10,7 @@
  */
 int get_endianness(void)
 {
-	unsigned int num = 0x01020304;
-	unsigned char *p = (unsigned char *)&num;
-
-	if (*p == 1 && *(p + 1) == 2 && *(p + 2) == 3 && *(p + 3) == 4)
+	if (BYTE_ORDER == BIG_ENDIAN)
 	{
 		return (0);
 	}
