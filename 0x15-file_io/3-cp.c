@@ -51,12 +51,16 @@ int cp_between_files(const char *file_from,
 	}
 	while ((bytes_read = read(file_from_fd, buf, 1024)) > 0)
 	{
-		dprintf(file_to_fd, "%s", buf);
+		if (dprintf(file_to_fd, "%s", buf) == -1)
+		{
+			if (close_file(file_from_fd) != 0 || close_file(file_to_fd) != 0)
+				return (100);
+		}
 		memset(buf, 0, 1024);
 	}
-	if (close_file(file_from_fd) != 0)
+	if (close_file(file_from_fd) != 0 || close_file(file_to_fd) != 0)
 		return (100);
-	return (close_file(file_to_fd));
+	return (0);
 }
 /**
  * main - check the code
