@@ -55,14 +55,11 @@ int cp_between_files(const char *file_from,
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 			close_file(file_from_fd);
-			close_file(file_to_fd);
 			return (99);
 		}
 	}
 	if (bytes_read == -1)
 	{
-		close_file(file_from_fd);
-		close_file(file_to_fd);
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n",
 				file_from);
 		return (98);
