@@ -12,13 +12,9 @@
 int cp_between_files(const char *file_from,
 					 const char *file_to)
 {
-	int file_from_fd, file_to_fd, bytes_read;
+	int file_from_fd, file_to_fd, bytes_read, write_status;
 	char buf[1024];
 
-	if (file_from == NULL || file_to == NULL)
-	{
-		return (-1);
-	}
 	file_from_fd = open(file_from, O_RDONLY);
 	if (file_from_fd == -1)
 	{
@@ -35,7 +31,12 @@ int cp_between_files(const char *file_from,
 	}
 	while ((bytes_read = read(file_from_fd, buf, 1024)) > 0)
 	{
-		dprintf(file_to_fd, "%s", buf);
+		write_status = dprintf(file_to_fd, "%s", buf);
+		if (write_status == -1)
+		{
+			fprintf(stderr, "Error: Can't write to %s\n", file_to);
+			return (99);
+		}
 	}
 	if (close(file_from_fd) == -1)
 	{
@@ -66,6 +67,10 @@ int main(int ac, char **av)
 	{
 		dprintf(2, "Usage: cp file_from file_to\n");
 		exit(97);
+	}
+	if (av[1] == NULL || av[2] == NULL)
+	{
+		return (-1);
 	}
 	res = cp_between_files(av[1], av[2]);
 	if (res != 0)
