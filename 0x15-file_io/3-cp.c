@@ -51,7 +51,7 @@ int cp_between_files(const char *file_from,
 	}
 	while ((bytes_read = read(file_from_fd, buf, 1024)) > 0)
 	{
-		if (dprintf(file_to_fd, "%s", buf) == -1)
+		if (dprintf(file_to_fd, "%s", buf) != bytes_read)
 		{
 			close_file(file_from_fd);
 			close_file(file_to_fd);
