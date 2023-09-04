@@ -32,6 +32,7 @@ int cp_between_files(const char *file_from,
 	while ((bytes_read = read(file_from_fd, buf, 1024)) > 0)
 	{
 		dprintf(file_to_fd, "%s", buf);
+		memset(buf, 0, 1024);
 	}
 	if (close(file_from_fd) == -1)
 	{
