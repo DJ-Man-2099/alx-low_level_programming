@@ -26,16 +26,18 @@ int cp_between_files(const char *file_from,
 					  S_IREAD | S_IWUSR | S_IWGRP);
 	if (file_to_fd == -1)
 	{
+		if (close(file_from_fd) == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n",
+					file_from_fd);
+			return (100);
+		}
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 		return (99);
 	}
 	while ((bytes_read = read(file_from_fd, buf, 1024)) > 0)
 	{
-		if (dprintf(file_to_fd, "%s", buf) == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
-			return (99);
-		}
+		dprintf(file_to_fd, "%s", buf);
 		memset(buf, 0, 1024);
 	}
 	if (close(file_from_fd) == -1)
