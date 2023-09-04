@@ -42,7 +42,7 @@ int cp_between_files(const char *file_from,
 		return (98);
 	}
 	file_to_fd = open(file_to, O_WRONLY | O_CREAT | O_TRUNC,
-					  0664);
+					  S_IRUSR | S_IRGRP | S_IROTH | S_IWUSR | S_IWGRP);
 	if (file_to_fd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
