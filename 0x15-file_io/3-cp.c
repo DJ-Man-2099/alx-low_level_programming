@@ -45,7 +45,8 @@ int cp_between_files(const char *file_from,
 					  S_IREAD | S_IWUSR | S_IWGRP);
 	if (file_to_fd == -1)
 	{
-		close_file(file_from_fd);
+		if (close_file(file_from_fd) != 0)
+			return (100);
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 		return (99);
 	}
@@ -55,6 +56,8 @@ int cp_between_files(const char *file_from,
 		{
 			if (close_file(file_from_fd) != 0 || close_file(file_to_fd) != 0)
 				return (100);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+			return (99);
 		}
 		memset(buf, 0, 1024);
 	}
