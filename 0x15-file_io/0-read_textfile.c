@@ -27,6 +27,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 				count = num_of_read_chars;
 			}
 		}
+		close(file);
 	}
 	free(file_contents);
 	return (count);
