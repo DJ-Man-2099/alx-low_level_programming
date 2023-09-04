@@ -1,5 +1,24 @@
 #include "main.h"
 /**
+ * close_file - file io function
+ * @file_fd: name of file to read
+ *
+ * closes file
+ *
+ * Return: 0 on Success,
+ * 100 on error
+ */
+int close_file(const int file_fd)
+{
+	if (close(file_fd) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n",
+				file_fd);
+		return (100);
+	}
+	return (0);
+}
+/**
  * cp_between_files - file io function
  * @file_from: name of file to read
  * @file_to: nam of file to write
@@ -26,12 +45,7 @@ int cp_between_files(const char *file_from,
 					  S_IREAD | S_IWUSR | S_IWGRP);
 	if (file_to_fd == -1)
 	{
-		if (close(file_from_fd) == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n",
-					file_from_fd);
-			return (100);
-		}
+		close_file(file_from_fd);
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 		return (99);
 	}
@@ -40,19 +54,9 @@ int cp_between_files(const char *file_from,
 		dprintf(file_to_fd, "%s", buf);
 		memset(buf, 0, 1024);
 	}
-	if (close(file_from_fd) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n",
-				file_from_fd);
+	if (close_file(file_from_fd) != 0)
 		return (100);
-	}
-	if (close(file_to_fd) == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n",
-				file_to_fd);
-		return (100);
-	}
-	return (0);
+	return (close_file(file_to_fd));
 }
 /**
  * main - check the code
