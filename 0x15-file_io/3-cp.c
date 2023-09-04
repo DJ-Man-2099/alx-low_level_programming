@@ -18,7 +18,7 @@ int cp_between_files(const char *file_from,
 	file_from_fd = open(file_from, O_RDONLY);
 	if (file_from_fd == -1)
 	{
-		fprintf(stderr, "Error: Can't read from file %s\n",
+		dprintf(2, "Error: Can't read from file %s\n",
 				file_from);
 		return (98);
 	}
@@ -26,27 +26,27 @@ int cp_between_files(const char *file_from,
 					  S_IREAD | S_IWUSR | S_IWGRP);
 	if (file_to_fd == -1)
 	{
-		fprintf(stderr, "Error: Can't write to %s\n", file_to);
+		dprintf(2, "Error: Can't write to %s\n", file_to);
 		return (99);
 	}
 	while ((bytes_read = read(file_from_fd, buf, 1024)) > 0)
 	{
 		if (dprintf(file_to_fd, "%s", buf) == -1)
 		{
-			fprintf(stderr, "Error: Can't write to %s\n", file_to);
+			dprintf(2, "Error: Can't write to %s\n", file_to);
 			return (99);
 		}
 		memset(buf, 0, 1024);
 	}
 	if (close(file_from_fd) == -1)
 	{
-		fprintf(stderr, "Error: Can't close fd %d\n",
+		dprintf(2, "Error: Can't close fd %d\n",
 				file_from_fd);
 		return (100);
 	}
 	if (close(file_to_fd) == -1)
 	{
-		fprintf(stderr, "Error: Can't close fd %d\n",
+		dprintf(2, "Error: Can't close fd %d\n",
 				file_to_fd);
 		return (100);
 	}
@@ -65,14 +65,10 @@ int main(int ac, char **av)
 
 	if (ac != 3)
 	{
-		fprintf(stderr, "Usage: cp file_from file_to\n");
+		dprintf(2, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	if (av[1] == NULL || av[2] == NULL)
-	{
-		return (-1);
-	}
-	res = cp_between_files(NULL, av[2]);
+	res = cp_between_files(av[1], av[2]);
 	if (res != 0)
 	{
 		exit(res);
