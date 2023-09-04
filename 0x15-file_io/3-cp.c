@@ -61,6 +61,14 @@ int cp_between_files(const char *file_from,
 		}
 		memset(buf, 0, 1024);
 	}
+	if (bytes_read == -1)
+	{
+		if (close_file(file_from_fd) != 0 || close_file(file_to_fd) != 0)
+			return (100);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n",
+				file_from);
+		return (98);
+	}
 	if (close_file(file_from_fd) != 0 || close_file(file_to_fd) != 0)
 		return (100);
 	return (0);
