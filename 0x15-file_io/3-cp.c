@@ -45,8 +45,7 @@ int cp_between_files(const char *file_from,
 					  S_IREAD | S_IWUSR | S_IWGRP);
 	if (file_to_fd == -1)
 	{
-		if (close_file(file_from_fd) != 0)
-			return (100);
+		close_file(file_from_fd);
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 		return (99);
 	}
@@ -54,8 +53,8 @@ int cp_between_files(const char *file_from,
 	{
 		if (dprintf(file_to_fd, "%s", buf) == -1)
 		{
-			if (close_file(file_from_fd) != 0 || close_file(file_to_fd) != 0)
-				return (100);
+			close_file(file_from_fd);
+			close_file(file_to_fd);
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 			return (99);
 		}
@@ -63,8 +62,8 @@ int cp_between_files(const char *file_from,
 	}
 	if (bytes_read == -1)
 	{
-		if (close_file(file_from_fd) != 0 || close_file(file_to_fd) != 0)
-			return (100);
+		close_file(file_from_fd);
+		close_file(file_to_fd);
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n",
 				file_from);
 		return (98);
