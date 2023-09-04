@@ -32,11 +32,6 @@ int cp_between_files(const char *file_from,
 	while ((bytes_read = read(file_from_fd, buf, 1024)) > 0)
 	{
 		write_status = dprintf(file_to_fd, "%s", buf);
-		if (write_status == -1)
-		{
-			fprintf(stderr, "Error: Can't write to %s\n", file_to);
-			return (99);
-		}
 	}
 	if (close(file_from_fd) == -1)
 	{
