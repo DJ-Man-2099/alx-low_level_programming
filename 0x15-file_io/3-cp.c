@@ -31,7 +31,7 @@ int close_file(const int file_fd)
 int cp_between_files(const char *file_from,
 					 const char *file_to)
 {
-	int file_from_fd, file_to_fd, bytes_read;
+	int file_from_fd, file_to_fd, bytes_read, m, n;
 	char buf[1024];
 
 	file_from_fd = open(file_from, O_RDONLY);
@@ -64,8 +64,16 @@ int cp_between_files(const char *file_from,
 				file_from);
 		return (98);
 	}
-	if (close_file(file_from_fd) != 0 || close_file(file_to_fd) != 0)
-		return (100);
+	m = close(file_from_fd);
+	n = close(file_to_fd);
+	if (m < 0 || n < 0)
+	{
+		if (m < 0)
+			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from_fd);
+		if (n < 0)
+			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_to_fd);
+		exit(100);
+	}
 	return (0);
 }
 /**
