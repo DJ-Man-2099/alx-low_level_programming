@@ -12,7 +12,7 @@
 int cp_between_files(const char *file_from,
 					 const char *file_to)
 {
-	int file_from_fd, file_to_fd, bytes_read, write_status;
+	int file_from_fd, file_to_fd, bytes_read;
 	char buf[1024];
 
 	file_from_fd = open(file_from, O_RDONLY);
