@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "main.h"
-#define LIMIT 1000000000000
+#define LIMIT 1000000000000000000
 /**
  * main - prints sum of natural numbers
  * that are below 1024
