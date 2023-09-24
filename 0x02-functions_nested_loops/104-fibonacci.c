@@ -11,6 +11,7 @@ int main(void)
 {
 	int i;
 	double a, b, sum;
+
 	a = 1;
 	b = 2;
 	printf("%.0f, %.0f, ", a, b);
