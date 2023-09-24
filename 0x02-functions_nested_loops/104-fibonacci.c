@@ -1,6 +1,47 @@
 #include <stdio.h>
 #include "main.h"
 #define LIMIT 1000000000000000000
+typedef struct big_num
+{
+	unsigned long low_half;
+	unsigned long high_half;
+} big_num;
+/**
+ * sum_big - big_num
+ * @a: big_num
+ * @b: big_num
+ *
+ * Sums the big nums
+ *
+ * Return: a + b
+ */
+big_num sum_big(big_num a, big_num b)
+{
+	big_num sum = {0, 0};
+
+	sum.high_half += a.high_half + b.high_half;
+	if (a.low_half + b.low_half > LIMIT)
+		sum.high_half += (a.low_half + b.low_half) / LIMIT;
+	sum.low_half = a.low_half % LIMIT + b.low_half % LIMIT;
+
+	return sum;
+}
+/**
+ * assign_big - big_num
+ * @src: big_num
+ *
+ * Sums the big nums
+ *
+ * Return: a => b
+ */
+big_num assign_big(big_num src)
+{
+	big_num dest = {0, 0};
+
+	dest.high_half = src.high_half;
+	dest.low_half = src.low_half % LIMIT;
+	return dest;
+}
 /**
  * main - prints sum of natural numbers
  * that are below 1024
@@ -11,37 +52,21 @@
 int main(void)
 {
 	int i;
-	long int low_a, low_b, low_sum = 0;
-	long int high_a = 0, high_b = 0, high_sum = 0;
+	big_num a = {1, 0},
+			b = {2, 0},
+			sum = {0, 0};
 
-	low_a = 1;
-	low_b = 2;
-	printf("%ld, %ld, ", low_a, low_b);
+	printf("%ld, %ld, ", a.low_half, b.low_half);
 	for (i = 2; i < 98; i++)
 	{
-		if (low_a > LIMIT)
-		{
-			high_a += 1;
-			low_a = low_a % LIMIT;
-		}
-		if (low_b > LIMIT)
-		{
-			high_b += 1;
-			low_b = low_b % LIMIT;
-		}
-		high_sum = high_a + high_b;
-		if (high_sum > 0)
-			printf("%ld", high_sum);
-		low_sum = low_a + low_b;
-		printf("%ld", low_sum);
+		sum = sum_big(a, b);
+		if (sum.high_half > 0)
+			printf("%ld", sum.high_half);
+		printf("%ld", sum.low_half);
 		if (i != 97)
-		{
 			printf(", ");
-		}
-		low_a = low_b;
-		low_b = low_sum;
-		high_a = high_b;
-		high_b = high_sum;
+		a = assign_big(b);
+		b = assign_big(sum);
 	}
 	printf("\n");
 	return (0);
