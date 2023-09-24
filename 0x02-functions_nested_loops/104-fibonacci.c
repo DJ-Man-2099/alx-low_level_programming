@@ -15,7 +15,7 @@ big_num sum_big(big_num a, big_num b)
 	big_num sum = {0, 0};
 
 	sum.high_half += a.high_half + b.high_half;
-	if (a.low_half + b.low_half > LIMIT)
+	if (a.low_half + b.low_half >= LIMIT)
 		sum.high_half += (a.low_half + b.low_half) / LIMIT;
 	sum.low_half = a.low_half % LIMIT + b.low_half % LIMIT;
 
