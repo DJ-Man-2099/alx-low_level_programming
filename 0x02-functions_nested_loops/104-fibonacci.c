@@ -1,11 +1,6 @@
 #include <stdio.h>
 #include "main.h"
-#define LIMIT 1000000000000000000
-typedef struct big_num
-{
-	unsigned long low_half;
-	unsigned long high_half;
-} big_num;
+
 /**
  * sum_big - big_num
  * @a: big_num
@@ -24,7 +19,7 @@ big_num sum_big(big_num a, big_num b)
 		sum.high_half += (a.low_half + b.low_half) / LIMIT;
 	sum.low_half = a.low_half % LIMIT + b.low_half % LIMIT;
 
-	return sum;
+	return (sum);
 }
 /**
  * assign_big - big_num
@@ -40,7 +35,7 @@ big_num assign_big(big_num src)
 
 	dest.high_half = src.high_half;
 	dest.low_half = src.low_half % LIMIT;
-	return dest;
+	return (dest);
 }
 /**
  * main - prints sum of natural numbers
