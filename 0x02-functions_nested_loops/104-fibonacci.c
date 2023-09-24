@@ -21,12 +21,12 @@ int main(void)
 	{
 		if (low_a > LIMIT)
 		{
-			high_a += low_a / LIMIT;
+			high_a += 1;
 			low_a = low_a % LIMIT;
 		}
 		if (low_b > LIMIT)
 		{
-			high_b += low_b / LIMIT;
+			high_b += 1;
 			low_b = low_b % LIMIT;
 		}
 		high_sum = high_a + high_b;
