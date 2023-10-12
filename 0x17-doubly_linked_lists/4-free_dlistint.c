@@ -1,6 +1,6 @@
 #include "lists.h"
 /**
- * add_dnodeint_end - dlinklist function
+ * free_dlistint - dlinklist function
  * @head: start of node
  *
  * frees list
