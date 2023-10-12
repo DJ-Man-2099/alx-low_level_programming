@@ -15,6 +15,7 @@ int main(void)
     head = NULL;
     insert_dnodeint_at_index(&head, 0, 0);
     add_dnodeint_end(&head, 1);
+    insert_dnodeint_at_index(&head, 1, 50);
     add_dnodeint_end(&head, 2);
     add_dnodeint_end(&head, 3);
     add_dnodeint_end(&head, 4);
