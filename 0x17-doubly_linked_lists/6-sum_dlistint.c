@@ -1,7 +1,7 @@
 #include "lists.h"
 /**
  * sum_dlistint - dlinklist function
- * @: head of list
+ * @head: head of list
  *
  * sums the values of nodes
  *
