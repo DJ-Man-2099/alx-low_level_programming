@@ -1,5 +1,16 @@
 #ifndef MAIN
 #define MAIN
+#define LIMIT 1000000000000000000
+/**
+ * struct big_num - to hold larg numbers.
+ * @low_half: low half.
+ * @high_half: high half.
+ */
+typedef struct big_num
+{
+	unsigned long low_half;
+	unsigned long high_half;
+} big_num;
 int _putchar(char c);
 void print_alphabet(void);
 void print_alphabet_x10(void);
