@@ -1,3 +1,3 @@
 #!/bin/bash
 gcc -fPIC -c *.c
-gcc -shared -o liball.so *.o
+export LD_PRELOAD="$PWD/101-fake_rand.so"
