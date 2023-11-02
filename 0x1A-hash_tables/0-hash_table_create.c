@@ -23,10 +23,8 @@ hash_table_t *hash_table_create(unsigned long int size)
 	for (i = 0; i < size; i++)
 	{
 		array[i] = malloc(sizeof(hash_node_t));
-		if (array[i] == NULL)
-			return (NULL);
 		array[i]->next = malloc(sizeof(hash_node_t));
-		if (array[i]->next == NULL)
+		if (array[i] == NULL || array[i]->next == NULL)
 			return (NULL);
 		array[i]->next = NULL;
 		array[i]->key = NULL;
