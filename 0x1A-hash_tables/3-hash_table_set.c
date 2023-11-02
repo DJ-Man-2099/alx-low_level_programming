@@ -14,7 +14,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	hash_node_t *new_node;
 
 	index = key_index((const unsigned char *)key, size);
-	if (ht->array[index]->value != NULL &&
+	if (ht->array[index] != NULL &&
+		ht->array[index]->value != NULL &&
 		strcmp(ht->array[index]->key, key) != 0)
 	{
 		new_node = calloc(1, sizeof(hash_node_t));
