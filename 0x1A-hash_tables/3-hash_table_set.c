@@ -40,6 +40,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		if (ht->array[index]->value == NULL)
 			return (0);
 		ht->array[index]->value = strcpy(ht->array[index]->value, value);
+		ht->array[index]->next = NULL;
 	}
 	return (1);
 }
