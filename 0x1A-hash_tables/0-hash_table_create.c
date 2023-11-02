@@ -9,16 +9,20 @@
 hash_table_t *hash_table_create(unsigned long int size)
 {
 	hash_table_t *table = calloc(1, sizeof(hash_table_t));
-	hash_node_t **array;
+	hash_node_t **array = calloc(size, sizeof(hash_node_t));
+	size_t i;
 
-	if (table == NULL)
+	if (table == NULL || array == NULL)
 		return (NULL);
 
-	array = calloc(size, sizeof(hash_node_t));
-	if (array == NULL)
+	for (i = 0; i < size; i++)
 	{
-		free(table);
-		return (NULL);
+		array[i] = calloc(1, sizeof(hash_node_t));
+		array[i]->next = calloc(1, sizeof(hash_node_t));
+		if (array[i] == NULL || array[i]->next == NULL)
+			return (NULL);
+		array[i]->key = NULL;
+		array[i]->value = NULL;
 	}
 
 	table->size = size;
