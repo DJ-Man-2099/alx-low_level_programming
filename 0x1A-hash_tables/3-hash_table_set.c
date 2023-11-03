@@ -15,17 +15,22 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	index = key_index((const unsigned char *)key, size);
 
-	if (strcmp(ht->array[index]->key, key) == 0)
+	if (ht->array[index] != NULL &&
+		strcmp(ht->array[index]->key, key) == 0)
 	{
-		ht->array[index]->value = value;
-		return (1);
+		new_node = ht->array[index];
+		free(new_node->value);
 	}
-	new_node = calloc(1, sizeof(hash_node_t));
+	else
+	{
+		new_node = calloc(1, sizeof(hash_node_t));
+		if (new_node == NULL)
+			return (0);
+		new_node->key = (char *)key;
+	}
 	new_node->value = calloc(1 + strlen(value), sizeof(char));
-	if (new_node == NULL ||
-		new_node->value == NULL)
+	if (new_node->value == NULL)
 		return (0);
-	new_node->key = (char *)key;
 	new_node->value = strcpy(new_node->value, value);
 	new_node->next = ht->array[index];
 	ht->array[index] = new_node;
