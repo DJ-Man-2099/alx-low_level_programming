@@ -44,10 +44,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		new_node->next = ht->array[index];
 		ht->array[index] = new_node;
 	}
-	new_node->value = calloc(1 + strlen(value), sizeof(char));
-	if (new_node->value == NULL)
-		return (FAIL);
-	new_node->value = strcpy(new_node->value, value);
+	new_node->value = strdup(value);
 
 	return (SUCCESS);
 }
