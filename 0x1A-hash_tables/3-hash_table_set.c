@@ -33,15 +33,15 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 	current = ht->array[index];
 
-	while (current != NULL)
+	while (current) /*while "head" is not NULL*/
 	{
-		if (strcmp(current->key, key) == 0)
+		if (strcmp(key, current->key) == 0)
 		{
 			free(current->value);
 			current->value = (strdup(value));
-			return (SUCCESS);
+			return (1);
 		}
-		current = current->next;
+		current = current->next; /*traversing*/
 	}
 	new_node = calloc(1, sizeof(hash_node_t));
 	if (new_node == NULL)
