@@ -9,7 +9,7 @@
 hash_table_t *hash_table_create(unsigned long int size)
 {
 	hash_table_t *table = calloc(1, sizeof(hash_table_t));
-	hash_node_t **array = calloc(size, sizeof(hash_node_t));
+	hash_node_t **array = calloc(size, sizeof(hash_node_t *));
 	size_t i = 0;
 
 	if (table == NULL || array == NULL)
