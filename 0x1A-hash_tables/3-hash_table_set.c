@@ -13,47 +13,38 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *newNode, *tempNode;
-	unsigned long int index;
+	unsigned long int index, size = ht->size;
+	hash_node_t *new_node = NULL, *current;
 
-	if (ht == NULL)
-		return (0);
-	index = (hash_djb2((const unsigned char *)key) % (ht->size));
-	if (key == NULL || value == NULL || (strcmp(key, "") == 0))
-		return (0);
-	if (ht->array[index] == NULL) /*slot is empty, put node here*/
+	if (strlen(key) == 0 || ht == NULL ||
+		ht->size == 0 || key == NULL || value == NULL)
+		return (FAIL);
+	index = key_index((const unsigned char *)key, size);
+	current = ht->array[index];
+
+	while (current != NULL)
 	{
-		newNode = malloc(sizeof(hash_node_t));
-		if (newNode == NULL)
-			return (0);
-		ht->array[index] = newNode;
-		newNode->key = (strdup(key));
-		newNode->value = (strdup(value));
-		newNode->next = NULL;
-		return (1);
-	}
-	tempNode = ht->array[index];
-	while (tempNode) /*while "head" is not NULL*/
-	{
-		if (strcmp(key, tempNode->key) == 0)
+		if (strcmp(current->key, key) == 0)
 		{
-			free(tempNode->value);
-			tempNode->value = (strdup(value));
-			return (1);
+			new_node = current;
+			break;
 		}
-		tempNode = tempNode->next; /*traversing*/
+		current = current->next;
 	}
-	tempNode = ht->array[index];
-	while (tempNode)
+	if (new_node != NULL)
 	{
-		newNode = malloc(sizeof(hash_node_t));
-		if (newNode == NULL)
-			return (0);
-		ht->array[index] = newNode;
-		newNode->key = (strdup(key));
-		newNode->value = (strdup(value));
-		newNode->next = tempNode, ht->array[index] = newNode;
-		return (1);
+		free(new_node->value);
 	}
-	return (0);
+	else
+	{
+		new_node = calloc(1, sizeof(hash_node_t));
+		if (new_node == NULL)
+			return (FAIL);
+		new_node->key = (char *)key;
+		new_node->next = ht->array[index];
+		ht->array[index] = new_node;
+	}
+	new_node->value = strdup(value);
+
+	return (SUCCESS);
 }
