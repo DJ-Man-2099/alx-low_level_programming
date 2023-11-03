@@ -27,15 +27,12 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		if (strcmp(current->key, key) == 0)
 		{
 			new_node = current;
+			free(new_node->value);
 			break;
 		}
 		current = current->next;
 	}
-	if (new_node != NULL)
-	{
-		free(new_node->value);
-	}
-	else
+	if (new_node == NULL)
 	{
 		new_node = calloc(1, sizeof(hash_node_t));
 		if (new_node == NULL)
