@@ -24,7 +24,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	while (current != NULL)
 	{
-		if (strcmp(current->key, key) == 0)
+		if (current->key != NULL &&
+			strcmp(current->key, key) == 0)
 		{
 			new_node = current;
 			free(new_node->value);
