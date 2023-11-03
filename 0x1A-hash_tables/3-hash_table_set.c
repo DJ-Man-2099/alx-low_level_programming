@@ -19,7 +19,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (strlen(key) == 0 || ht == NULL ||
 		key == NULL || value == NULL)
 		return (FAIL);
-	index = key_index((const unsigned char *)key, size);
+	index = (hash_djb2((const unsigned char *)key) % (ht->size));
 	if (ht->array[index] == NULL) /*slot is empty, put node here*/
 	{
 		new_node = malloc(sizeof(hash_node_t));
