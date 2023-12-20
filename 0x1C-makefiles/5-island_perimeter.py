@@ -25,8 +25,10 @@ def island_perimeter(grid):
                         or column_index != 0 and \
                         grid[row_index][column_index-1] == 0:
                     perimeter += 1
-                if row_index == len(grid[row_index])-1 \
+                if column_index == len(grid[row_index])-1 \
                         or column_index < len(grid[row_index])-1 \
                         and grid[row_index][column_index+1] == 0:
                     perimeter += 1
+                print(
+                    f"row: {row_index}, column: {column_index}, perimeter: {perimeter}")
     return perimeter
