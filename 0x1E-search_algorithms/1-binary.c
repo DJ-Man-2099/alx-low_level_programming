@@ -13,12 +13,10 @@
 int inner_binary_search(int *array, size_t start, size_t end, int value)
 {
 	size_t index = -1, middle, i;
-	int size;
 
 	if (array != NULL)
 	{
-		size = end - start;
-		if (size <= 0)
+		if (end <= start)
 			return (index);
 		printf("Searching in array: ");
 		for (i = start; i < end; i++)
@@ -28,17 +26,26 @@ int inner_binary_search(int *array, size_t start, size_t end, int value)
 				printf(", ");
 		}
 		printf("\n");
-		if (size % 2 == 0)
-			middle = (size / 2) - 1;
+		if ((end + start) % 2 == 0)
+			middle = ((end + start) / 2) - 1;
 		else
-			middle = (size - 1) / 2;
-		middle += start;
+			middle = ((end + start) - 1) / 2;
 		if (array[middle] == value)
 			index = middle;
-		else if (array[middle] > value)
-			return (inner_binary_search(array, 0, middle, value));
 		else
-			return (inner_binary_search(array, middle + 1, size, value));
+		{
+			if (array[middle] > value)
+			{
+				start = start;
+				end = middle;
+			}
+			else
+			{
+				start = middle + 1;
+				end = end;
+			}
+			return (inner_binary_search(array, start, end, value));
+		}
 	}
 
 	return (index);
