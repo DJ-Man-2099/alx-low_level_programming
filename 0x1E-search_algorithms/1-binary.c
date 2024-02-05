@@ -13,10 +13,13 @@
 int inner_binary_search(int *array, size_t start, size_t end, int value)
 {
 	size_t index = -1, middle, i;
-	int size = end - start;
+	int size;
 
-	if (array != NULL && size > 0)
+	if (array != NULL)
 	{
+		size = end - start;
+		if (size <= 0)
+			return (index);
 		printf("Searching in array: ");
 		for (i = start; i < end; i++)
 		{
