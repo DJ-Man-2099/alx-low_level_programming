@@ -67,12 +67,13 @@ int exponential_search(int *array, size_t size, int value)
 
 	if (array != NULL && size > 0)
 	{
+		new_size = 1;
 		if (array[0] == value)
 		{
 			printf("Value checked array[0] = [%d]\n", array[0]);
-			return (0);
+			printf("Value found between indexes [0] and [%lu]\n", new_size);
+			return (inner_binary_search(array, 0, new_size, value));
 		}
-		new_size = 1;
 		while (new_size <= size && array[new_size] <= value)
 		{
 			printf("Value checked array[%lu] = [%d]\n", new_size, array[new_size]);
