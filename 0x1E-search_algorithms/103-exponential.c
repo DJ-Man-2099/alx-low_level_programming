@@ -70,8 +70,7 @@ int exponential_search(int *array, size_t size, int value)
 		new_size = 1, old_size = 0;
 		if (array[0] == value)
 		{
-			printf("Value found between indexes [0] and [0]\n");
-			return (inner_binary_search(array, 0, 1, value));
+			return (0);
 		}
 		while (new_size <= size && array[new_size] < value)
 		{
