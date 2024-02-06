@@ -34,9 +34,9 @@ int interpolation_search(int *array, size_t size, int value)
 				break;
 			}
 			else if (array[current] < value)
-				low = current + 1;
+				low = current;
 			else
-				high = current - 1;
+				high = current;
 		}
 	}
 
