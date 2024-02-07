@@ -3,7 +3,6 @@
 /**
  * linear_skip - search alg
  * @list: list
- * @size: size
  * @value: value
  *
  * searches for a value in an array of integers
